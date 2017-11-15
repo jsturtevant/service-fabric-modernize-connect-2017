@@ -11,6 +11,7 @@ using WingtipToys;
 using WingtipToys.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 public class NVPAPICaller
 {
@@ -51,7 +52,7 @@ public class NVPAPICaller
     APISignature = Signature;
   }
 
-  public bool ShortcutExpressCheckout(string amt, ref string token, ref string retMsg)
+  public async Task<(bool result, string token, string msg)> ShortcutExpressCheckout(string amt)
   {
     if (bSandbox)
     {
@@ -75,7 +76,7 @@ public class NVPAPICaller
     // Get the Shopping Cart Products
     using (WingtipToys.Logic.ShoppingCartActions myCartOrders = new WingtipToys.Logic.ShoppingCartActions())
     {
-      List<CartItem> myOrderList = myCartOrders.GetCartItems();
+      List<CartItem> myOrderList = await myCartOrders.GetCartItems();
 
       for (int i = 0; i < myOrderList.Count; i++)
       {
@@ -94,17 +95,17 @@ public class NVPAPICaller
     string strAck = decoder["ACK"].ToLower();
     if (strAck != null && (strAck == "success" || strAck == "successwithwarning"))
     {
-      token = decoder["TOKEN"];
+      string token = decoder["TOKEN"];
       string ECURL = "https://" + host + "/cgi-bin/webscr?cmd=_express-checkout" + "&token=" + token;
-      retMsg = ECURL;
-      return true;
+      string retMsg = ECURL;
+      return (true, token, retMsg);
     }
     else
     {
-      retMsg = "ErrorCode=" + decoder["L_ERRORCODE0"] + "&" +
+      string retMsg = "ErrorCode=" + decoder["L_ERRORCODE0"] + "&" +
           "Desc=" + decoder["L_SHORTMESSAGE0"] + "&" +
           "Desc2=" + decoder["L_LONGMESSAGE0"];
-      return false;
+      return (false, null, retMsg);
     }
   }
 

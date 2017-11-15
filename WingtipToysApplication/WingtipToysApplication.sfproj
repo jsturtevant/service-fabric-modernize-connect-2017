@@ -2,11 +2,11 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets=";ValidateMSBuildFiles">
   <Import Project="..\C#\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.6.2\build\Microsoft.VisualStudio.Azure.Fabric.Application.props" Condition="Exists('..\C#\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.6.2\build\Microsoft.VisualStudio.Azure.Fabric.Application.props')" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>08d77bda-9101-4eaa-9888-943a34e56074</ProjectGuid>
+    <ProjectGuid>67712bc2-77f2-4bde-aca1-2ff3ae83369e</ProjectGuid>
     <ProjectVersion>1.8</ProjectVersion>
     <MinToolsVersion>1.5</MinToolsVersion>
     <SupportedMSBuildNuGetPackageVersion>1.6</SupportedMSBuildNuGetPackageVersion>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -32,6 +32,9 @@
     <Content Include="ApplicationPackageRoot\WingtipToysServicePkg\Config\Settings.xml" />
     <Content Include="ApplicationPackageRoot\WingtipToysServicePkg\ServiceManifest.xml" />
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\C#\ShoppingCart\ShoppingCart.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

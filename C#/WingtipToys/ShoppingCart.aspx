@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="WingtipToys.ShoppingCart" %>
+﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="WingtipToys.ShoppingCart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div id="ShoppingCartTitle" runat="server" class="ContentHead"><h1>Shopping Cart</h1></div>
     <asp:GridView ID="CartList" runat="server" AutoGenerateColumns="False" ShowFooter="True" GridLines="Vertical" CellPadding="4"
-        ItemType="WingtipToys.Models.CartItem" SelectMethod="GetShoppingCartItems" 
+        ItemType="WingtipToys.Models.CartItem"
         CssClass="table table-striped table-bordered" >   
         <Columns>
         <asp:BoundField DataField="ProductID" HeaderText="ID" SortExpression="ProductID" />        
@@ -39,10 +39,12 @@
         <asp:Button ID="UpdateBtn" runat="server" Text="Update" OnClick="UpdateBtn_Click" />
       </td>
       <td>
+         
         <asp:ImageButton ID="CheckoutImageBtn" runat="server" 
+                      ImageUrl="" 
                       Width="145" AlternateText="Check out" 
                       OnClick="CheckoutBtn_Click" 
-                      BackColor="Transparent" BorderWidth="0" />
+                      BorderWidth="0" />
       </td>
     </tr>
     </table>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using Microsoft.AspNet.Identity;
@@ -12,6 +13,11 @@ namespace WingtipToys.Account
     public partial class Register : Page
     {
         protected void CreateUser_Click(object sender, EventArgs e)
+        {
+           Page.RegisterAsyncTask(new PageAsyncTask(CreateUserAsync));
+        }
+
+        private async Task CreateUserAsync()
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
@@ -27,13 +33,13 @@ namespace WingtipToys.Account
 
                 using (WingtipToys.Logic.ShoppingCartActions usersShoppingCart = new WingtipToys.Logic.ShoppingCartActions())
                 {
-                  String cartId = usersShoppingCart.GetCartId();
-                  usersShoppingCart.MigrateCart(cartId, user.Id);
+                    String cartId = usersShoppingCart.GetCartId();
+                    await usersShoppingCart.MigrateCart(cartId, user.Id);
                 }
 
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
-            else 
+            else
             {
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
             }

@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "sf-connect2017"
+        },
+        "clusterLocation": {
+            "value": "westus2"
+        },
+        "computeLocation": {
+            "value": "westus2"
+        },
+        "adminUserName": {
+            "value": "adminconnect"
+        },
+        "nicName": {
+            "value": "NIC-sf-connect2017"
+        },
+        "publicIPAddressName": {
+            "value": "sf-connect2017-PubIP"
+        },
+        "dnsName": {
+            "value": "sf-connect2017"
+        },
+        "virtualNetworkName": {
+            "value": "VNet-sf-connect2017"
+        },
+        "lbName": {
+            "value": "LB-sf-connect2017"
+        },
+        "lbIPName": {
+            "value": "LBIP-sf-connect2017"
+        },
+        "applicationDiagnosticsStorageAccountName": {
+            "value": "sfdgsfconnect20173738"
+        },
+        "supportLogStorageAccountName": {
+            "value": "sflogssfconnect20175308"
+        },
+        "vmImageSku": {
+            "value": "2016-Datacenter-with-Containers"
+        },
+        "nt0ephemeralStartPort": {
+            "value": 49152
+        },
+        "nt0ephemeralEndPort": {
+            "value": 65534
+        },
+        "nt0applicationStartPort": {
+            "value": 20000
+        },
+        "nt0applicationEndPort": {
+            "value": 30000
+        },
+        "nt0fabricTcpGatewayPort": {
+            "value": 19000
+        },
+        "nt0fabricHttpGatewayPort": {
+            "value": 19080
+        },
+        "nt0reverseProxyEndpointPort": {
+            "value": 19081
+        }
+    }
+}

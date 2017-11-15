@@ -1,226 +1,183 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Refit;
+using WingtipToys.api;
 using WingtipToys.Models;
+using System.Threading.Tasks;
 
 namespace WingtipToys.Logic
 {
-  public class ShoppingCartActions : IDisposable
-  {
-    public string ShoppingCartId { get; set; }
-
-    private ProductContext _db = new ProductContext();
-
-    public const string CartSessionKey = "CartId";
-
-    public void AddToCart(int id)
+    public class ShoppingCartActions : IDisposable
     {
-      // Retrieve the product from the database.           
-      ShoppingCartId = GetCartId();
+        public string ShoppingCartId { get; set; }
 
-      var cartItem = _db.ShoppingCartItems.SingleOrDefault(
-          c => c.CartId == ShoppingCartId
-          && c.ProductId == id);
-      if (cartItem == null)
-      {
-        // Create a new cart item if no cart item exists.                 
-        cartItem = new CartItem
+        private ProductContext _db = new ProductContext();
+
+        public const string CartSessionKey = "CartId";
+
+        public async Task AddToCart(int id)
         {
-          ItemId = Guid.NewGuid().ToString(),
-          ProductId = id,
-          CartId = ShoppingCartId,
-          Product = _db.Products.SingleOrDefault(
-           p => p.ProductID == id),
-          Quantity = 1,
-          DateCreated = DateTime.Now
-        };
 
-        _db.ShoppingCartItems.Add(cartItem);
-      }
-      else
-      {
-        // If the item does exist in the cart,                  
-        // then add one to the quantity.                 
-        cartItem.Quantity++;
-      }
-      _db.SaveChanges();
-    }
+            // Retrieve the product from the database.           
+            ShoppingCartId = GetCartId();
+            var client = RestService.For<IShoppingCart>(ShoppingCartHelpers.BaseUrl);
 
-    public void Dispose()
-    {
-      if (_db != null)
-      {
-        _db.Dispose();
-        _db = null;
-      }
-    }
-
-    public string GetCartId()
-    {
-      if (HttpContext.Current.Session[CartSessionKey] == null)
-      {
-        if (!string.IsNullOrWhiteSpace(HttpContext.Current.User.Identity.Name))
-        {
-          HttpContext.Current.Session[CartSessionKey] = HttpContext.Current.User.Identity.Name;
+            await client.AddItem(ShoppingCartId, id, ShoppingCartId.GetPartionKey());
         }
-        else
+
+        public void Dispose()
         {
-          // Generate a new random GUID using System.Guid class.     
-          Guid tempCartId = Guid.NewGuid();
-          HttpContext.Current.Session[CartSessionKey] = tempCartId.ToString();
-        }
-      }
-      return HttpContext.Current.Session[CartSessionKey].ToString();
-    }
-
-    public List<CartItem> GetCartItems()
-    {
-      ShoppingCartId = GetCartId();
-
-      return _db.ShoppingCartItems.Where(
-          c => c.CartId == ShoppingCartId).ToList();
-    }
-
-    public decimal GetTotal()
-    {
-      ShoppingCartId = GetCartId();
-      // Multiply product price by quantity of that product to get        
-      // the current price for each of those products in the cart.  
-      // Sum all product price totals to get the cart total.   
-      decimal? total = decimal.Zero;
-      total = (decimal?)(from cartItems in _db.ShoppingCartItems
-                         where cartItems.CartId == ShoppingCartId
-                         select (int?)cartItems.Quantity *
-                         cartItems.Product.UnitPrice).Sum();
-      return total ?? decimal.Zero;
-    }
-
-    public ShoppingCartActions GetCart(HttpContext context)
-    {
-      using (var cart = new ShoppingCartActions())
-      {
-        cart.ShoppingCartId = cart.GetCartId();
-        return cart;
-      }
-    }
-
-    public void UpdateShoppingCartDatabase(String cartId, ShoppingCartUpdates[] CartItemUpdates)
-    {
-      using (var db = new WingtipToys.Models.ProductContext())
-      {
-        try
-        {
-          int CartItemCount = CartItemUpdates.Count();
-          List<CartItem> myCart = GetCartItems();
-          foreach (var cartItem in myCart)
-          {
-            // Iterate through all rows within shopping cart list
-            for (int i = 0; i < CartItemCount; i++)
+            if (_db != null)
             {
-              if (cartItem.Product.ProductID == CartItemUpdates[i].ProductId)
-              {
-                if (CartItemUpdates[i].PurchaseQuantity < 1 || CartItemUpdates[i].RemoveItem == true)
+                _db.Dispose();
+                _db = null;
+            }
+        }
+
+        public string GetCartId()
+        {
+            //switch from session to cookie so that it will work across load balanced apps.
+            if (HttpContext.Current.Request.Cookies[CartSessionKey] == null)
+            {
+                if (!string.IsNullOrWhiteSpace(HttpContext.Current.User.Identity.Name))
                 {
-                  RemoveItem(cartId, cartItem.ProductId);
+                    HttpContext.Current.Response.SetCookie(new HttpCookie(CartSessionKey, HttpContext.Current.User.Identity.Name));
                 }
                 else
                 {
-                  UpdateItem(cartId, cartItem.ProductId, CartItemUpdates[i].PurchaseQuantity);
+                    // Generate a new random GUID using System.Guid class.     
+                    Guid tempCartId = Guid.NewGuid();
+                    HttpContext.Current.Response.SetCookie(new HttpCookie(CartSessionKey, tempCartId.ToString()));
                 }
-              }
             }
-          }
+            return HttpContext.Current.Request.Cookies[CartSessionKey]?.ToString();
         }
-        catch (Exception exp)
+
+        public async Task<List<CartItem>> GetCartItems()
         {
-          throw new Exception("ERROR: Unable to Update Cart Database - " + exp.Message.ToString(), exp);
-        }
-      }
-    }
+            ShoppingCartId = GetCartId();
 
-    public void RemoveItem(string removeCartID, int removeProductID)
-    {
-      using (var _db = new WingtipToys.Models.ProductContext())
-      {
-        try
+            var client = RestService.For<IShoppingCart>(ShoppingCartHelpers.BaseUrl);
+            var items = await client.GetCart(ShoppingCartId, ShoppingCartId.GetPartionKey());
+
+            List<CartItem> cartItems = await MergeWithProducts(items);
+            return cartItems;
+        }
+
+        public async Task<decimal> GetTotal()
         {
-          var myItem = (from c in _db.ShoppingCartItems where c.CartId == removeCartID && c.Product.ProductID == removeProductID select c).FirstOrDefault();
-          if (myItem != null)
-          {
-            // Remove Item.
-            _db.ShoppingCartItems.Remove(myItem);
-            _db.SaveChanges();
-          }
+            ShoppingCartId = GetCartId();
+
+            var client = RestService.For<IShoppingCart>(ShoppingCartHelpers.BaseUrl);
+            var items = await client.GetCart(ShoppingCartId, ShoppingCartId.GetPartionKey());
+
+            List<CartItem> cartItems = await MergeWithProducts(items);
+
+            decimal? total = decimal.Zero;
+            total = (decimal?)cartItems.Sum(x => x.Quantity * x.Product.UnitPrice);
+            return total ?? decimal.Zero;
         }
-        catch (Exception exp)
+
+        public ShoppingCartActions GetCart(HttpContext context)
         {
-          throw new Exception("ERROR: Unable to Remove Cart Item - " + exp.Message.ToString(), exp);
+            using (var cart = new ShoppingCartActions())
+            {
+                cart.ShoppingCartId = cart.GetCartId();
+                return cart;
+            }
         }
-      }
-    }
 
-    public void UpdateItem(string updateCartID, int updateProductID, int quantity)
-    {
-      using (var _db = new WingtipToys.Models.ProductContext())
-      {
-        try
+        public async Task UpdateShoppingCartDatabase(ShoppingCartUpdates[] cartItemUpdates)
         {
-          var myItem = (from c in _db.ShoppingCartItems where c.CartId == updateCartID && c.Product.ProductID == updateProductID select c).FirstOrDefault();
-          if (myItem != null)
-          {
-            myItem.Quantity = quantity;
-            _db.SaveChanges();
-          }
+            ShoppingCartId = GetCartId();
+            var client = RestService.For<IShoppingCart>(ShoppingCartHelpers.BaseUrl);
+
+            try
+            {
+                
+                List<Item> items = await client.GetCart(ShoppingCartId, ShoppingCartId.GetPartionKey());
+                int cartItemCount = cartItemUpdates.Count();
+                foreach (var cartItem in items)
+                {
+                    // Iterate through all rows within shopping cart list
+                    for (int i = 0; i < cartItemCount; i++)
+                    {
+                        if (cartItem.ProductId == cartItemUpdates[i].ProductId)
+                        {
+                            if (cartItemUpdates[i].PurchaseQuantity < 1 || cartItemUpdates[i].RemoveItem == true)
+                            {
+                                await client.Delete(ShoppingCartId, cartItem.ProductId, ShoppingCartId.GetPartionKey());
+                            }
+                            else
+                            {
+                                await client.Put(ShoppingCartId, cartItem.ProductId, cartItemUpdates[i].PurchaseQuantity, ShoppingCartId.GetPartionKey());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+                throw new Exception("ERROR: Unable to Update Cart Database - " + exp.Message.ToString(), exp);
+            }
+
         }
-        catch (Exception exp)
+
+        public void EmptyCart()
         {
-          throw new Exception("ERROR: Unable to Update Cart Item - " + exp.Message.ToString(), exp);
+            ShoppingCartId = GetCartId();
+            var client = RestService.For<IShoppingCart>(ShoppingCartHelpers.BaseUrl);
+
+            client.EmptyCart(ShoppingCartId, ShoppingCartId.GetPartionKey());
         }
-      }
-    }
 
-    public void EmptyCart()
-    {
-      ShoppingCartId = GetCartId();
-      var cartItems = _db.ShoppingCartItems.Where(
-          c => c.CartId == ShoppingCartId);
-      foreach (var cartItem in cartItems)
-      {
-        _db.ShoppingCartItems.Remove(cartItem);
-      }
-      // Save changes.             
-      _db.SaveChanges();
-    }
+        public async Task<int> GetCount()
+        {
+            ShoppingCartId = GetCartId();
 
-    public int GetCount()
-    {
-      ShoppingCartId = GetCartId();
+            var client = RestService.For<IShoppingCart>(ShoppingCartHelpers.BaseUrl);
+            var items = await client.GetCart(ShoppingCartId, ShoppingCartId.GetPartionKey());
+            
+            return items.Sum(x => x.Quantity);
+        }
 
-      // Get the count of each item in the cart and sum them up          
-      int? count = (from cartItems in _db.ShoppingCartItems
-                    where cartItems.CartId == ShoppingCartId
-                    select (int?)cartItems.Quantity).Sum();
-      // Return 0 if all entries are null         
-      return count ?? 0;
-    }
+        public struct ShoppingCartUpdates
+        {
+            public int ProductId;
+            public int PurchaseQuantity;
+            public bool RemoveItem;
+        }
 
-    public struct ShoppingCartUpdates
-    {
-      public int ProductId;
-      public int PurchaseQuantity;
-      public bool RemoveItem;
-    }
+        public async Task MigrateCart(string cartId, string userName)
+        {
+            var client = RestService.For<IShoppingCart>(ShoppingCartHelpers.BaseUrl);
+            var items = await client.GetCart(ShoppingCartId, ShoppingCartId.GetPartionKey());
 
-    public void MigrateCart(string cartId, string userName)
-    {
-      var shoppingCart = _db.ShoppingCartItems.Where(c => c.CartId == cartId);
-      foreach (CartItem item in shoppingCart)
-      {
-        item.CartId = userName;
-      }
-      HttpContext.Current.Session[CartSessionKey] = userName;
-      _db.SaveChanges();
+            await client.Replace(userName, items, userName.GetPartionKey());
+        }
+
+        private async Task<List<CartItem>> MergeWithProducts(List<Item> items)
+        {
+            var productIds = items.Select(x => x.ProductId);
+            var products = await _db.Products.Where(x => productIds.Contains(x.ProductID)).ToListAsync();
+
+            List<CartItem> cartItems = items.Join(products,
+                item => item.ProductId,
+                product => product.ProductID,
+                (item, product) =>
+                    new CartItem()
+                    {
+                        CartId = ShoppingCartId,
+                        DateCreated = item.DateCreated,
+                        ItemId = item.ItemId,
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                        Product = product
+                    }).ToList();
+            return cartItems;
+        }
     }
-  }
 }

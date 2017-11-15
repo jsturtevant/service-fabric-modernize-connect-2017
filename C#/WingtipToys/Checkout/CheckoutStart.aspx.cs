@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,29 +12,32 @@ namespace WingtipToys.Checkout
   {
     protected void Page_Load(object sender, EventArgs e)
     {
-      NVPAPICaller payPalCaller = new NVPAPICaller();
-      string retMsg = "";
-      string token = "";
-
-      if (Session["payment_amt"] != null)
-      {
-        string amt = Session["payment_amt"].ToString();
-
-        bool ret = payPalCaller.ShortcutExpressCheckout(amt, ref token, ref retMsg);
-        if (ret)
-        {
-          Session["token"] = token;
-          Response.Redirect(retMsg);
-        }
-        else
-        {
-          Response.Redirect("CheckoutError.aspx?" + retMsg);
-        }
-      }
-      else
-      {
-        Response.Redirect("CheckoutError.aspx?ErrorCode=AmtMissing");
-      }
+      RegisterAsyncTask(new PageAsyncTask(CheckoutAsync));
     }
+
+      private async Task CheckoutAsync()
+      {
+          NVPAPICaller payPalCaller = new NVPAPICaller();
+
+          if (Session["payment_amt"] != null)
+          {
+              string amt = Session["payment_amt"].ToString();
+
+              var result = await payPalCaller.ShortcutExpressCheckout(amt);
+              if (result.result)
+              {
+                  Session["token"] = result.token;
+                  Response.Redirect(result.msg);
+              }
+              else
+              {
+                  Response.Redirect("CheckoutError.aspx?" + result.msg);
+              }
+          }
+          else
+          {
+              Response.Redirect("CheckoutError.aspx?ErrorCode=AmtMissing");
+          }
+        }
   }
 }

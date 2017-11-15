@@ -81,7 +81,7 @@ namespace WingtipToys
         {
           using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
           {
-            string cartStr = string.Format("Cart ({0})", usersShoppingCart.GetCount());
+            string cartStr = string.Format("Cart");
             cartCount.InnerText = cartStr;
           }
         }

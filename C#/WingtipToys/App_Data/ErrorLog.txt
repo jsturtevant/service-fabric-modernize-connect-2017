@@ -48,3 +48,516 @@ Exception Type: System.Web.HttpException
 Exception: An HTTP error occurred. Page Not found. Please try again.
 Source: customErrors section - Web.config
 Stack Trace: 
+********** 11/13/2017 1:28:35 PM **********
+Inner Exception Type: Refit.ApiException
+Inner Exception: Response status code does not indicate success: 400 (FABRIC_E_INVALID_PARTITION_KEY).
+Inner Source: Refit
+Inner Stack Trace: 
+   at Refit.RequestBuilderImplementation.<>c__DisplayClass13_0`1.<<BuildCancellableTaskFuncForMethod>b__0>d.MoveNext() in C:\projects\refit\Refit\RequestBuilderImplementation.cs:line 393
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.Logic.ShoppingCartActions.AddToCart(Int32 id) in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 25
+   at WingtipToys.AddToCart.Page_Load(Object sender, EventArgs e) in C:\projects\WingtipToys\csharp\WingtipToys\AddToCart.aspx.cs:line 22
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.addtocart_aspx.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 11/13/2017 1:59:16 PM **********
+Inner Exception Type: Refit.ApiException
+Inner Exception: Response status code does not indicate success: 400 (FABRIC_E_INVALID_PARTITION_KEY).
+Inner Source: Refit
+Inner Stack Trace: 
+   at Refit.RequestBuilderImplementation.<>c__DisplayClass13_0`1.<<BuildCancellableTaskFuncForMethod>b__0>d.MoveNext() in C:\projects\refit\Refit\RequestBuilderImplementation.cs:line 393
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.Logic.ShoppingCartActions.AddToCart(Int32 id) in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 25
+   at WingtipToys.AddToCart.Page_Load(Object sender, EventArgs e) in C:\projects\WingtipToys\csharp\WingtipToys\AddToCart.aspx.cs:line 22
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.addtocart_aspx.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 11/13/2017 10:08:33 PM **********
+Inner Exception Type: System.NullReferenceException
+Inner Exception: Object reference not set to an instance of an object.
+Inner Source: WingtipToys
+Inner Stack Trace: 
+   at WingtipToys.Logic.ShoppingCartActions.<>c.<GetTotal>b__10_0(CartItem x) in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.Sum(IEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<GetTotal>d__10.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<GetTotalAsync>d__1.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 28
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/13/2017 10:08:37 PM **********
+Inner Exception Type: System.NullReferenceException
+Inner Exception: Object reference not set to an instance of an object.
+Inner Source: WingtipToys
+Inner Stack Trace: 
+   at WingtipToys.Logic.ShoppingCartActions.<>c.<GetTotal>b__10_0(CartItem x) in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.Sum(IEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<GetTotal>d__10.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<GetTotalAsync>d__1.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 28
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/13/2017 10:08:57 PM **********
+Inner Exception Type: System.NullReferenceException
+Inner Exception: Object reference not set to an instance of an object.
+Inner Source: WingtipToys
+Inner Stack Trace: 
+   at WingtipToys.Logic.ShoppingCartActions.<>c.<GetTotal>b__10_0(CartItem x) in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.Sum(IEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<GetTotal>d__10.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<GetTotalAsync>d__1.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 28
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/13/2017 10:10:33 PM **********
+Inner Exception Type: System.NullReferenceException
+Inner Exception: Object reference not set to an instance of an object.
+Inner Source: WingtipToys
+Inner Stack Trace: 
+   at WingtipToys.Logic.ShoppingCartActions.<>c.<GetTotal>b__10_0(CartItem x) in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.Sum(IEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<GetTotal>d__10.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<GetTotalAsync>d__1.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 28
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/13/2017 10:12:40 PM **********
+Inner Exception Type: System.TimeoutException
+Inner Exception: An asynchronous operation exceeded the page timeout.
+Inner Source: System.Web
+Inner Stack Trace: 
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/14/2017 10:11:49 AM **********
+Inner Exception Type: System.NotSupportedException
+Inner Exception: A second operation started on this context before a previous asynchronous operation completed. Use 'await' to ensure that any asynchronous operations have completed before calling another method on this context. Any instance members are not guaranteed to be thread safe.
+Inner Source: EntityFramework
+Inner Stack Trace: 
+   at System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.System.Data.Entity.Infrastructure.IDbAsyncEnumerable<T>.GetAsyncEnumerator()
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ForEachAsync[T](IDbAsyncEnumerable`1 source, Action`1 action, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<MergeWithProducts>d__17.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.Logic.ShoppingCartActions.<GetCartItems>d__9.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 66
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<UpdateCartItems>d__3.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 76
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<<UpdateBtn_Click>b__5_0>d.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 99
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/14/2017 10:13:30 AM **********
+Inner Exception Type: System.NotSupportedException
+Inner Exception: A second operation started on this context before a previous asynchronous operation completed. Use 'await' to ensure that any asynchronous operations have completed before calling another method on this context. Any instance members are not guaranteed to be thread safe.
+Inner Source: EntityFramework
+Inner Stack Trace: 
+   at System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.System.Data.Entity.Infrastructure.IDbAsyncEnumerable<T>.GetAsyncEnumerator()
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ForEachAsync[T](IDbAsyncEnumerable`1 source, Action`1 action, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<MergeWithProducts>d__17.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.Logic.ShoppingCartActions.<GetCartItems>d__9.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 66
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<UpdateCartItems>d__3.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 76
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<<UpdateBtn_Click>b__5_0>d.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 99
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/14/2017 10:13:38 AM **********
+Inner Exception Type: System.NotSupportedException
+Inner Exception: A second operation started on this context before a previous asynchronous operation completed. Use 'await' to ensure that any asynchronous operations have completed before calling another method on this context. Any instance members are not guaranteed to be thread safe.
+Inner Source: EntityFramework
+Inner Stack Trace: 
+   at System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.System.Data.Entity.Infrastructure.IDbAsyncEnumerable<T>.GetAsyncEnumerator()
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ForEachAsync[T](IDbAsyncEnumerable`1 source, Action`1 action, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<MergeWithProducts>d__17.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.Logic.ShoppingCartActions.<GetCartItems>d__9.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 66
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<UpdateCartItems>d__3.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 76
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<<UpdateBtn_Click>b__5_0>d.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 99
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/14/2017 10:14:01 AM **********
+Inner Exception Type: System.NotSupportedException
+Inner Exception: A second operation started on this context before a previous asynchronous operation completed. Use 'await' to ensure that any asynchronous operations have completed before calling another method on this context. Any instance members are not guaranteed to be thread safe.
+Inner Source: EntityFramework
+Inner Stack Trace: 
+   at System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.System.Data.Entity.Infrastructure.IDbAsyncEnumerable<T>.GetAsyncEnumerator()
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ForEachAsync[T](IDbAsyncEnumerable`1 source, Action`1 action, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source, CancellationToken cancellationToken)
+   at System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.ToListAsync[T](IDbAsyncEnumerable`1 source)
+   at WingtipToys.Logic.ShoppingCartActions.<MergeWithProducts>d__17.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 164
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.Logic.ShoppingCartActions.<GetCartItems>d__9.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\Logic\ShoppingCartActions.cs:line 66
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<UpdateCartItems>d__3.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 76
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<<UpdateBtn_Click>b__5_0>d.MoveNext() in C:\projects\WingtipToys\csharp\WingtipToys\ShoppingCart.aspx.cs:line 99
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/14/2017 10:15:06 AM **********
+Inner Exception Type: System.TimeoutException
+Inner Exception: An asynchronous operation exceeded the page timeout.
+Inner Source: System.Web
+Inner Stack Trace: 
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/14/2017 10:23:30 AM **********
+Inner Exception Type: System.TimeoutException
+Inner Exception: An asynchronous operation exceeded the page timeout.
+Inner Source: System.Web
+Inner Stack Trace: 
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/14/2017 10:24:51 AM **********
+Inner Exception Type: System.TimeoutException
+Inner Exception: An asynchronous operation exceeded the page timeout.
+Inner Source: System.Web
+Inner Stack Trace: 
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.InvokeEndHandler(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
+********** 11/15/2017 3:51:04 PM **********
+Inner Exception Type: System.Net.Http.HttpRequestException
+Inner Exception: An error occurred while sending the request.
+Inner Source: mscorlib
+Inner Stack Trace: 
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Refit.RequestBuilderImplementation.<>c__DisplayClass13_0`1.<<BuildCancellableTaskFuncForMethod>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.Logic.ShoppingCartActions.<GetCartItems>d__9.MoveNext() in C:\Connect\WingtipToys-NewService\C#\WingtipToys\Logic\ShoppingCartActions.cs:line 64
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WingtipToys.ShoppingCart.<GetShoppingCartItems>d__2.MoveNext() in C:\Connect\WingtipToys-NewService\C#\WingtipToys\ShoppingCart.aspx.cs:line 54
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.PageAsyncTaskManager.<ExecuteTasksAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+Exception Type: System.Web.HttpUnhandledException
+Exception: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: Application_Error - Global.asax
+Stack Trace: 
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.<ProcessRequestAsync>d__554.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.TaskAsyncHelper.EndTask(IAsyncResult ar)
+   at ASP.shoppingcart_aspx.EndProcessRequest(IAsyncResult ar)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)
+
