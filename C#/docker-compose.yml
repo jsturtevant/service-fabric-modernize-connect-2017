@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  wingtiptoys:
+    image: wingtiptoys
+    build:
+      context: .\WingtipToys
+      dockerfile: Dockerfile

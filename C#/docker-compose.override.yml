@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  wingtiptoys:
+    ports:
+      - "80"
+networks:
+  default:
+    external:
+      name: nat
