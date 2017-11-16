@@ -23,7 +23,7 @@
     <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
         <PortBinding ContainerPort="80" EndpointRef="WingtipToysTypeEndpoint" />
-        <RepositoryCredentials AccountName="sfconnect2017" Password="iNbWQw==/81yJNOqqtgoSR0qIPeMdXGT" PasswordEncrypted="false" />
+        <RepositoryCredentials AccountName="sfconnect2017" Password="" PasswordEncrypted="false" />
       </ContainerHostPolicies>
     </Policies>
   </ServiceManifestImport>
@@ -38,7 +38,7 @@
         <UniformInt64Partition PartitionCount="[ShoppingCart_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
-    <Service Name="WingtipToys" ServicePackageActivationMode="ExclusiveProcess">
+    <Service Name="WingtipToysService" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="WingtipToysServiceType" InstanceCount="[WingtipToys_InstanceCount]">
         <SingletonPartition />
       </StatelessService>

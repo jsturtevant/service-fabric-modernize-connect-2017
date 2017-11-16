@@ -23,7 +23,7 @@
   <ClusterConnectionParameters ConnectionEndpoint="sf-connect2017.westus2.cloudapp.azure.com:19000" />
   <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
   <CopyPackageParameters CompressPackage="true" />
-  <UpgradeDeployment Mode="UnmonitoredAuto" Enabled="false">
+  <UpgradeDeployment Mode="UnmonitoredAuto" Enabled="true">
     <Parameters Force="True" />
   </UpgradeDeployment>
 </PublishProfile>
